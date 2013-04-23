@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 
 int vector [20];
 int i=0;
@@ -48,6 +49,18 @@ float calcula_media (int x[]) {
         return (m);
 }
 
+float calcula_dsvpd (int x[], float y) {
+	float m=0;
+	float n=0;
+
+	for (i=0;i<20;i++) {
+		n=n+pow((x[i]-y),2);
+	}
+	i=0;
+	m=sqrt(n/19);
+	return (m);	
+}	
+
 void main () {
         float media=0;
         float dsvpd=0;
@@ -65,6 +78,10 @@ void main () {
 
         media = calcula_media(vector);
         printf("A média é: %f\n", media);
+
+	dsvpd = calcula_dsvpd (vector,media);
+	printf("O desvio padrão é: %f\n", dsvpd);
+
 }
 
 
